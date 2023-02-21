@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "coords-screen",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Coords Screen",
+  "description": "Display all your saved coordinates",
   "authors": [
-    "Me!"
+    "phil_not_funny"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://proxreal.tk",
+    "sources": "https://github.com/phil-not-funny/fabric-coords-screen"
   },
 
   "license": "CC0-1.0",
@@ -18,8 +18,9 @@
 
   "environment": "*",
   "entrypoints": {
-    "main": [
-      "net.fabricmc.example.ExampleMod"
+    
+    "client": [
+      "com.pnf.fabric.coordsscreen.CoordsScreenMod"
     ]
   },
   "mixins": [
