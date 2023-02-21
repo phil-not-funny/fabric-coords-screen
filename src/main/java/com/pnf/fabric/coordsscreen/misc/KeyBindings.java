@@ -2,11 +2,11 @@ package com.pnf.fabric.coordsscreen.misc;
 
 import org.lwjgl.glfw.GLFW;
 
+import com.pnf.fabric.coordsscreen.CoordsScreenMod;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
-import net.minecraft.text.Text;
 
 public class KeyBindings {
 	public static final String KEYBIND_CATEGORY = "CoordsScreen Mod";
@@ -24,7 +24,8 @@ public class KeyBindings {
 	public void registerKeybinds() {
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
 			while (keyBinding.wasPressed()) {
-				client.player.sendMessage(Text.literal("Key COMMA was pressed"), false);
+				CoordsScreenMod.LOGGER.info("Opening GUI");
+				//MinecraftClient.getInstance().setScreen(new MainCoordsScreen(new MainCoordsGui()));
 			}
 		});
 	}
