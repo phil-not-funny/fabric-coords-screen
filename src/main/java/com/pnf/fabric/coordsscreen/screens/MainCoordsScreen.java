@@ -23,17 +23,20 @@ public class MainCoordsScreen extends SpruceScreen {
     protected void init() {
         super.init();
 
-        int startY = this.height / 4 + 48;
-        this.addDrawableChild(new SpruceButtonWidget(Position.of(this, this.width / 2 - 100, startY), 200, 20, Text.literal("Option Test"),
-                btn -> {} /*this.client.setScreen(new SpruceOptionScreen(this))*/));
-        this.addDrawableChild(new SpruceButtonWidget(Position.of(this, this.width / 2 - 100, startY += 25), 200, 20, Text.literal("Text Area Test"),
-				btn -> {
-				} /* this.client.setScreen(new NewCoordsScreen(this)) */));
-        this.addDrawableChild(new SpruceButtonWidget(Position.of(this, this.width / 2 - 100, startY += 25), 200, 20, Text.literal("Tabbed Screen Test"),
+        int startY = 25;
+        this.addDrawableChild(new SpruceButtonWidget(Position.of(this, this.width / 2 - 100, startY ), 200, 20, Text.literal("Add a POI"),
+				btn -> 
+				  this.client.setScreen(new AddPOIScreen(this))));
+        this.addDrawableChild(new SpruceButtonWidget(Position.of(this, this.width / 2 - 100, startY += 25), 200, 20, Text.literal("List of POIs"),
                 btn -> this.client.setScreen(new TestCoordsScreen(this))));
 
         // Add done button.
         this.addDrawableChild(new SpruceButtonWidget(Position.of(this, this.width / 2 - 75, this.height - 29), 150, 20, SpruceTexts.GUI_DONE,
                 btn -> this.client.setScreen(this.parent)));
+    }
+
+    @Override
+	public void renderTitle(MatrixStack matrices, int mouseX, int mouseY, float delta) {
+        drawCenteredText(matrices, this.textRenderer, this.title, this.width / 2, 8, 16777215);
     }
 }

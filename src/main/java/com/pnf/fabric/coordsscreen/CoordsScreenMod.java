@@ -9,18 +9,21 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.toast.SystemToast;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 
 import org.jetbrains.annotations.Nullable;
 
 import com.pnf.fabric.coordsscreen.misc.KeyBindings;
-import com.pnf.fabric.coordsscreen.misc.TestEnum;
+import com.pnf.fabric.coordsscreen.misc.MinecraftLevels;
 
 import dev.lambdaurora.spruceui.Position;
 import dev.lambdaurora.spruceui.SpruceTexts;
+import dev.lambdaurora.spruceui.background.Background;
 import dev.lambdaurora.spruceui.option.SpruceFloatInputOption;
 import dev.lambdaurora.spruceui.option.*;
 import dev.lambdaurora.spruceui.widget.SpruceButtonWidget;
+import dev.lambdaurora.spruceui.widget.SpruceWidget;
 import dev.lambdaurora.spruceui.widget.container.SpruceContainerWidget;
 import dev.lambdaurora.spruceui.widget.container.SpruceOptionListWidget;
 import dev.lambdaurora.spruceui.widget.text.SpruceTextAreaWidget;
@@ -45,7 +48,7 @@ public class CoordsScreenMod implements ClientModInitializer {
 	    private boolean checkboxBoolean;
 	    private boolean toggleBoolean;
 	    private double aDouble;
-	    private TestEnum cyclingValue = TestEnum.FIRST;
+	    private MinecraftLevels cyclingValue = MinecraftLevels.OVERWORLD;
 	    private int anInt;
 	    private float aFloat;
 	    private double anInputDouble;
@@ -117,7 +120,7 @@ public class CoordsScreenMod implements ClientModInitializer {
 	            this.aBoolean = false;
 	            this.checkboxBoolean = false;
 	            this.aDouble = 0.0;
-	            this.cyclingValue = TestEnum.FIRST;
+	            this.cyclingValue = MinecraftLevels.OVERWORLD;
 
 	            // Re-initialize the screen to update all the values.
 	            if (this.resetConsumer != null)

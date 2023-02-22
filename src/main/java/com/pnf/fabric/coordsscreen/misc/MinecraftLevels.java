@@ -9,15 +9,14 @@ import org.jetbrains.annotations.NotNull;
  *
  * @author LambdAurora
  */
-public enum TestEnum implements Nameable {
-    FIRST,
-    SECOND,
-    THIRD,
-    ANOTHER_VALUE;
+public enum MinecraftLevels implements Nameable {
+    OVERWORLD,
+    NETHER,
+    THE_END;
 
     private final Text text;
 
-    TestEnum() {
+    MinecraftLevels() {
         this.text = Text.literal(this.getName());
     }
 
@@ -26,7 +25,7 @@ public enum TestEnum implements Nameable {
      *
      * @return The next available enum value.
      */
-    public @NotNull TestEnum next() {
+    public @NotNull MinecraftLevels next() {
         var v = values();
         if (v.length == this.ordinal() + 1)
             return v[0];
@@ -44,6 +43,6 @@ public enum TestEnum implements Nameable {
 
     @Override
     public @NotNull String getName() {
-        return this.name().toLowerCase();
+        return this.name().replace("_", " ");
     }
 }

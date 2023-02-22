@@ -58,9 +58,5 @@ public class TestCoordsScreen extends SpruceScreen {
                 btn -> this.client.setScreen(this.parent)).asVanilla());
 	}
 	
-	@Override
-	public void renderTitle(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-        drawCenteredText(matrices, this.textRenderer, this.title, this.width / 2, 8, 16777215);
-    }
 	
 }
