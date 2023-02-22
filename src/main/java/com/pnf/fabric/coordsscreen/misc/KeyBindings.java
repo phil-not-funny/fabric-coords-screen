@@ -3,8 +3,11 @@ package com.pnf.fabric.coordsscreen.misc;
 import org.lwjgl.glfw.GLFW;
 
 import com.pnf.fabric.coordsscreen.CoordsScreenMod;
+import com.pnf.fabric.coordsscreen.screens.MainCoordsScreen;
+
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 
@@ -25,7 +28,7 @@ public class KeyBindings {
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
 			while (keyBinding.wasPressed()) {
 				CoordsScreenMod.LOGGER.info("Opening GUI");
-				//MinecraftClient.getInstance().setScreen(new MainCoordsScreen(new MainCoordsGui()));
+				MinecraftClient.getInstance().setScreen(new MainCoordsScreen(null));
 			}
 		});
 	}

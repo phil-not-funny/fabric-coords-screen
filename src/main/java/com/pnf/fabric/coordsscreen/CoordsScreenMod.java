@@ -14,6 +14,7 @@ import net.minecraft.text.Text;
 import org.jetbrains.annotations.Nullable;
 
 import com.pnf.fabric.coordsscreen.misc.KeyBindings;
+import com.pnf.fabric.coordsscreen.misc.TestEnum;
 
 import dev.lambdaurora.spruceui.Position;
 import dev.lambdaurora.spruceui.SpruceTexts;
