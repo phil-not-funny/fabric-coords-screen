@@ -2,10 +2,11 @@ package com.pnf.fabric.coordsscreen.screens;
 
 import org.jetbrains.annotations.Nullable;
 
+import com.pnf.fabric.coordsscreen.misc.Config;
 import com.pnf.fabric.coordsscreen.misc.MinecraftLevels;
+import com.pnf.fabric.coordsscreen.model.POI;
 
 import dev.lambdaurora.spruceui.Position;
-import dev.lambdaurora.spruceui.SpruceTexts;
 import dev.lambdaurora.spruceui.option.SpruceCyclingOption;
 import dev.lambdaurora.spruceui.option.SpruceFloatInputOption;
 import dev.lambdaurora.spruceui.option.SpruceSimpleActionOption;
@@ -17,7 +18,6 @@ import dev.lambdaurora.spruceui.widget.text.SpruceNamedTextFieldWidget;
 import dev.lambdaurora.spruceui.widget.text.SpruceTextFieldWidget;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 
@@ -40,7 +40,7 @@ public class AddPOIScreen extends SpruceScreen {
 		var container = new SpruceContainerWidget(Position.origin(), width, 25);
 		container.addChildren((containerWidth, containerHeight, widgetAdder) -> {
 			widgetAdder.accept(new SpruceLabelWidget(Position.of(0, 3),
-					Text.literal("Add a POI to your list of POIs")
+					Text.literal("Add a POI to your list of POIs; ESC to Cancel")
 							.formatted(Formatting.WHITE),
 					containerWidth, true));
 		});
@@ -61,10 +61,17 @@ public class AddPOIScreen extends SpruceScreen {
 				option -> option.getDisplayText(this.worldInValue.getText()), Text.of("The world of the coordinates")));
 		list.addSingleOptionEntry(SpruceSimpleActionOption.of("Pick Current", btn -> {
 			var position = MinecraftClient.getInstance().player.getPos();
-			System.out.println(position.x + ", " + position.y + ", " + position.z);
+			xInValue = (float) position.x;
+			yInValue = (float) position.y;
+			zInValue = (float) position.z;
 		}, null));
-		list.addSingleOptionEntry(SpruceSimpleActionOption.of(SpruceTexts.GUI_DONE.getString(), btn -> {
-			this.client.setScreen(this.parent);
+		list.addSingleOptionEntry(SpruceSimpleActionOption.of("Create", btn -> {
+			if(!textfield.getText().isBlank()) {
+				POI poi = new POI(textfield.getText(), xInValue, yInValue, zInValue, worldInValue);
+				Config.addPOI(poi);
+				System.out.println(poi.toString());
+				this.client.setScreen(this.parent);
+			}
 		}, null));
 
 		addDrawableChild(container);
@@ -73,5 +80,5 @@ public class AddPOIScreen extends SpruceScreen {
 		// container.setBackground(DrawableHelper.fillGradient(matrices, 0, 0,
 		// this.width, this.height, -1072689136, -804253680));
 	}
-
+	
 }

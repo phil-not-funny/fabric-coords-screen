@@ -1,8 +1,9 @@
 package com.pnf.fabric.coordsscreen.misc;
 
+import org.jetbrains.annotations.NotNull;
+
 import dev.lambdaurora.spruceui.util.Nameable;
 import net.minecraft.text.Text;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Represents a dummy enum.

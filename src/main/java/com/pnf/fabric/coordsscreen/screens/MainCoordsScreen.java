@@ -15,7 +15,7 @@ public class MainCoordsScreen extends SpruceScreen {
 	private final Screen parent;
 
     public MainCoordsScreen(@Nullable Screen parent) {
-        super(Text.literal("SpruceUI Test Main Menu"));
+        super(Text.literal("Coords Screen Fabric Menu"));
         this.parent = parent;
     }
 
@@ -28,7 +28,7 @@ public class MainCoordsScreen extends SpruceScreen {
 				btn -> 
 				  this.client.setScreen(new AddPOIScreen(this))));
         this.addDrawableChild(new SpruceButtonWidget(Position.of(this, this.width / 2 - 100, startY += 25), 200, 20, Text.literal("List of POIs"),
-                btn -> this.client.setScreen(new TestCoordsScreen(this))));
+                btn -> this.client.setScreen(new ListPOIScreen(this))));
 
         // Add done button.
         this.addDrawableChild(new SpruceButtonWidget(Position.of(this, this.width / 2 - 75, this.height - 29), 150, 20, SpruceTexts.GUI_DONE,
